@@ -1,0 +1,68 @@
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  margin: 20px;
+}
+
+.mat-column-time {
+  width: 20%;
+}
+
+.mat-column-client {
+  width: 25%;
+}
+
+.mat-column-Date {
+  width: 20%;
+}
+
+.mat-column-topic {
+  width: 30%;
+}
+
+.mat-column-actions {
+  width: 15%;
+  text-align: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-info {
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.search-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.no-results {
+  padding: 40px;
+  text-align: center;
+  background-color: #fafafa;
+}
+
+.no-results p {
+  margin: 0;
+  font-size: 16px;
+  color: #999;
+}
+
+/* Action buttons styling */
+.mat-column-actions button {
+  min-width: 40px;
+  height: 40px;
+}
+
+.mat-column-actions .mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}

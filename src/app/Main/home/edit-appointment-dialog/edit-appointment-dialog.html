@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>Edit Appointment</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="appointmentForm" class="appointment-form">
+    
+    <!-- Client Name -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Client Name</mat-label>
+      <input matInput formControlName="client" placeholder="Enter client name">
+      <mat-error *ngIf="appointmentForm.get('client')?.hasError('required')">
+        Client name is required
+      </mat-error>
+      <mat-error *ngIf="appointmentForm.get('client')?.hasError('minlength')">
+        Client name must be at least 2 characters
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Date -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Date</mat-label>
+      <input matInput 
+             [matDatepicker]="picker" 
+             [min]="minDate"
+             formControlName="Date" 
+             placeholder="Select date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="appointmentForm.get('Date')?.hasError('required')">
+        Date is required
+      </mat-error>
+      <mat-hint>Past dates are disabled. Select today or future date.</mat-hint>
+    </mat-form-field>
+
+    <!-- Time -->
+    <div class="time-field full-width">
+      <div class="field-label">Time (IST)</div>
+      <app-time-picker 
+        [selectedTime]="appointmentForm.get('time')?.value || ''"
+        [selectedDate]="appointmentForm.get('Date')?.value"
+        placeholder="Select time"
+        (timeChange)="onTimeChange($event)">
+      </app-time-picker>
+      <div class="field-error" *ngIf="appointmentForm.get('time')?.hasError('required') && appointmentForm.get('time')?.touched">
+        Time is required
+      </div>
+      <div class="field-hint">Select time in IST timezone</div>
+    </div>
+
+    <!-- Topic -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Topic</mat-label>
+      <textarea matInput formControlName="topic" placeholder="Enter appointment topic" rows="3"></textarea>
+      <mat-error *ngIf="appointmentForm.get('topic')?.hasError('required')">
+        Topic is required
+      </mat-error>
+      <mat-error *ngIf="appointmentForm.get('topic')?.hasError('minlength')">
+        Topic must be at least 5 characters
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button 
+          color="primary" 
+          (click)="onSave()" 
+          [disabled]="appointmentForm.invalid">
+    Save Changes
+  </button>
+</mat-dialog-actions>

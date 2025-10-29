@@ -1,0 +1,59 @@
+<div class="mat-elevation-z8">
+  <div class="search-info" *ngIf="dataSource.filter">
+    <p>Showing {{dataSource.filteredData.length}} result(s) for "{{dataSource.filter}}"</p>
+  </div>
+
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="time">
+      <mat-header-cell *matHeaderCellDef> Time </mat-header-cell>
+      <mat-cell *matCellDef="let appointment"> {{appointment.time}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="client">
+      <mat-header-cell *matHeaderCellDef> Client </mat-header-cell>
+      <mat-cell *matCellDef="let appointment"> {{appointment.client}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let appointment"> {{appointment.Date | date:'MMM dd, yyyy'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="topic">
+      <mat-header-cell *matHeaderCellDef> Topic </mat-header-cell>
+      <mat-cell *matCellDef="let appointment"> {{appointment.topic}} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let appointment; let i = index">
+        <button mat-icon-button 
+                color="primary" 
+                (click)="editAppointment(appointment, i)"
+                matTooltip="Edit appointment">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button 
+                color="warn" 
+                (click)="deleteAppointment(appointment, i)"
+                matTooltip="Delete appointment">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <div class="no-results" *ngIf="dataSource.filter && dataSource.filteredData.length === 0">
+    <p>No appointments found matching "{{dataSource.filter}}"</p>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of appointments">
+  </mat-paginator>
+</div>

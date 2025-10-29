@@ -7,6 +7,16 @@
     <mat-form-field class="custom-input" appearance="outline">
         <mat-label>Search</mat-label>
         <span class="material-symbols-outlined" matPrefix>search</span>
-        <input matInput placeholder="Search appointments">
+        <input matInput 
+               placeholder="Search appointments"
+               [(ngModel)]="searchTerm"
+               (input)="onSearchChange($event)">
+        <button matSuffix 
+                mat-icon-button 
+                aria-label="Clear search"
+                *ngIf="searchTerm"
+                (click)="onSearchClear()">
+            <span class="material-symbols-outlined">close</span>
+        </button>
     </mat-form-field>  
 </mat-toolbar>

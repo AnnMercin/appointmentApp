@@ -1,0 +1,65 @@
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.time-field {
+  margin-bottom: 20px;
+}
+
+.field-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.field-error {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.field-hint {
+  color: #666;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.past-date-warning {
+  color: #ff9800;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.past-date-warning mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+mat-dialog-content {
+  padding: 20px;
+}
+
+mat-dialog-actions {
+  padding: 16px 20px;
+}
+
+/* Form field styling */
+::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  margin-top: 4px;
+}
+
+::ng-deep .mat-mdc-form-field-hint-wrapper {
+  padding-top: 4px;
+}
