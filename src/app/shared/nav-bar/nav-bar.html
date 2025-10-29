@@ -1,6 +1,12 @@
-<ul>
-    <li><span class="material-symbols-outlined">menu</span></li>
-    <li><span class="material-symbols-outlined">search</span></li>
-    <li><input type="text" placeholder="Search..."></li>
-    <li class="right">Appointment Booking</li>
-</ul>
+<mat-toolbar>
+    <button mat-icon-button (click)="onMenuClick()">
+        <span class="material-symbols-outlined">menu</span>
+    </button>
+    <span class="title">Appointment Booking</span>
+    <span class="spacer"></span>
+    <mat-form-field class="custom-input" appearance="outline">
+        <mat-label>Search</mat-label>
+        <span class="material-symbols-outlined" matPrefix>search</span>
+        <input matInput placeholder="Search appointments">
+    </mat-form-field>  
+</mat-toolbar>

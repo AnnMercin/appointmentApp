@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './nav-bar.css',
 })
 export class NavBar {
+  @Output() menuToggle = new EventEmitter<void>();
 
+  onMenuClick() {
+    this.menuToggle.emit();
+  }
 }
